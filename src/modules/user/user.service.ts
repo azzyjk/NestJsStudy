@@ -7,8 +7,10 @@ import { User } from './entities/user.entity';
 export class UserService {
   userList = [new User(1, 23), new User(2, 25)];
 
-  create(createUserInput: CreateUserInput) {
-    return 'This action adds a new user';
+  create({ id, age }: CreateUserInput): User {
+    const newUser = new User(id, age);
+    this.userList.push(newUser);
+    return newUser;
   }
 
   findAll(): User[] {
